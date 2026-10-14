@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Odds &amp; Whiskers</title>
+<meta name="description" content="Odds & Whiskers: a desktop app for Kalshi's 15-minute crypto contracts, with cat sidekicks. Free download for Windows and macOS.">
+<meta property="og:title" content="Odds & Whiskers">
+<meta property="og:description" content="A desktop app for Kalshi's 15-minute crypto contracts, with cat sidekicks. Windows and macOS.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2f6fe4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%232f6fe4'/%3E%3Cpath d='M15 27 L19 9 L30 20 Z M49 27 L45 9 L34 20 Z' fill='%23ffb347'/%3E%3Cellipse cx='32' cy='35' rx='20' ry='17' fill='%23ffb347'/%3E%3Cellipse cx='25' cy='33' rx='2.6' ry='3.3' fill='%232b2118'/%3E%3Cellipse cx='39' cy='33' rx='2.6' ry='3.3' fill='%232b2118'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one column "play pen" — a fenced hero with the cat and a live-looking odds ticket, then download pens,
+   then a tabbed setup guide, then what stays yours, then the update history. */
+:root {
+  --bg: #f4f6fb; --panel: #ffffff; --ink: #151824; --ink2: #545a6e; --line: #dfe3ee;
+  --ginger: #f08a24; --ginger-soft: #fde9d4; --blue: #2f6fe4; --blue-soft: #e3ebfc;
+  --pos: #1e9e5a; --neg: #d6453d; --warn-bg: #fff5e6; --warn-ink: #8a4b06;
+  --display: "Fredoka", "Avenir Next Rounded", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --radius: 18px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0e1016; --panel: #171a23; --ink: #eef0f6; --ink2: #a3a9bb; --line: #2a2f3d;
+  --ginger: #ff9d42; --ginger-soft: #3a2614; --blue: #6e9cff; --blue-soft: #1b2540;
+  --pos: #3ccf80; --neg: #ff6b62; --warn-bg: #2e2112; --warn-ink: #ffc98a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0e1016; --panel: #171a23; --ink: #eef0f6; --ink2: #a3a9bb; --line: #2a2f3d;
+  --ginger: #ff9d42; --ginger-soft: #3a2614; --blue: #6e9cff; --blue-soft: #1b2540;
+  --pos: #3ccf80; --neg: #ff6b62; --warn-bg: #2e2112; --warn-ink: #ffc98a; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); padding-inline: 16px; padding-block: 0 64px }
+.wrap { max-width: 980px; margin: 0 auto; display: grid; gap: 56px }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0 }
+h2 { font-size: clamp(26px, 4vw, 34px); font-weight: 600 }
+h3 { font-size: 19px; font-weight: 600 }
+p { margin: 0; max-width: 65ch }
+a { color: var(--blue) }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--ginger) }
+.muted { color: var(--ink2) }
+.mono { font-family: var(--mono); font-size: .92em }
+section { display: grid; gap: 18px; min-width: 0 }
+
+/* hero: the pen */
+.hero { margin-top: 28px; position: relative; background: var(--panel); border-radius: 28px; padding: clamp(24px, 5vw, 48px);
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: center; overflow: hidden }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 22px; opacity: .55;
+  background: repeating-linear-gradient(90deg, var(--ginger-soft) 0 10px, transparent 10px 26px),
+              linear-gradient(var(--ginger-soft), var(--ginger-soft)) 0 6px / 100% 3px no-repeat }
+.brand { display: flex; gap: 16px; align-items: center; margin-bottom: 18px }
+.brand svg { width: 72px; height: 72px; flex: none; filter: drop-shadow(0 6px 14px rgba(47, 111, 228, .25)) }
+.hero h1 { font-size: clamp(40px, 7vw, 66px); font-weight: 700; letter-spacing: -.01em }
+.hero h1 .amp { color: var(--ginger) }
+.lede { font-size: 18px; color: var(--ink2); margin-top: 14px }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px }
+.chip { font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 99px; background: var(--blue-soft); color: var(--blue) }
+.chip.g { background: var(--ginger-soft); color: var(--ginger) }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px }
+
+/* a little odds ticket, like the app's "Right now" card */
+.ticket { background: var(--bg); border-radius: var(--radius); padding: 18px; display: grid; gap: 12px; font-variant-numeric: tabular-nums;
+  transform: rotate(1.5deg); box-shadow: 0 12px 30px rgba(21, 24, 36, .08) }
+.ticket .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px }
+.ticket .coin { font-family: var(--display); font-size: 22px; font-weight: 600 }
+.ticket .clock { font-family: var(--mono); color: var(--ink2); font-size: 14px }
+.ticket .px { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
+.ticket .px div { background: var(--panel); border-radius: 12px; padding: 10px 12px }
+.ticket .px b { display: block; font-family: var(--mono); font-size: 22px }
+.ticket .up { color: var(--pos) } .ticket .dn { color: var(--neg) }
+.ticket .say { font-size: 14px; background: var(--panel); border-radius: 12px; padding: 10px 12px; border-left: 4px solid var(--ginger) }
+.ticket small { color: var(--ink2); font-size: 12px }
+
+/* buttons */
+button { font: 600 15px/1 var(--body); border: 0; border-radius: 12px; padding: 13px 18px; cursor: pointer; background: var(--blue-soft); color: var(--blue) }
+button.primary { background: var(--blue); color: #fff }
+button:disabled { opacity: .55; cursor: default }
+a.btn { display: inline-block; text-align: center; text-decoration: none; font: 600 15px/1 var(--body); border-radius: 12px; padding: 14px 18px; background: var(--blue); color: #fff }
+a.btn:hover { filter: brightness(1.08) } a.btn:focus-visible { outline: 3px solid var(--ginger); outline-offset: 2px }
+button:focus-visible, .tabs button:focus-visible { outline: 3px solid var(--ginger); outline-offset: 2px }
+
+/* download pens */
+.pens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px }
+.pen { background: var(--panel); border-radius: var(--radius); padding: 22px; display: grid; gap: 12px; align-content: start; border: 2px solid transparent }
+.pen.mine { border-color: var(--blue) }
+.pen .top { display: flex; align-items: center; gap: 12px }
+.pen .os { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--bg); flex: none }
+.pen .os svg { width: 24px; height: 24px; fill: var(--ink) }
+.pen dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; font-size: 14px }
+.pen dt { color: var(--ink2) } .pen dd { margin: 0; font-variant-numeric: tabular-nums }
+.status { font-size: 14px; min-height: 1.4em }
+.status.ok { color: var(--pos) } .status.err { color: var(--neg) }
+.note { background: var(--warn-bg); color: var(--warn-ink); border-radius: 12px; padding: 10px 14px; font-size: 14px }
+.kind { background: var(--panel); border-radius: var(--radius); padding: 18px 22px; display: grid; gap: 6px; font-size: 15px }
+
+/* tutorial */
+.tabs { display: inline-flex; background: var(--panel); border-radius: 14px; padding: 4px; gap: 4px; justify-self: start }
+.tabs button { background: transparent; color: var(--ink2); padding: 10px 18px }
+.tabs button[aria-selected="true"] { background: var(--blue); color: #fff }
+ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 12px }
+ol.steps > li { counter-increment: s; background: var(--panel); border-radius: var(--radius); padding: 18px 20px 18px 66px; position: relative; min-width: 0 }
+ol.steps > li::before { content: counter(s); position: absolute; left: 18px; top: 16px; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--ginger-soft); color: var(--ginger); font: 700 16px/32px var(--display); text-align: center }
+ol.steps h3 { margin-bottom: 6px }
+ol.steps p + p, ol.steps p + ul, ol.steps ul + p { margin-top: 8px }
+ol.steps ul { margin: 0; padding-left: 20px; max-width: 65ch }
+.phase { font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--ink2); margin-top: 10px }
+kbd, .file { font-family: var(--mono); font-size: .88em; background: var(--bg); border-radius: 6px; padding: 1px 6px; white-space: nowrap }
+.real { border-left: 4px solid var(--neg) }
+
+/* yours / updates */
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px }
+.card { background: var(--panel); border-radius: var(--radius); padding: 18px 20px; display: grid; gap: 6px; align-content: start }
+.card p { font-size: 15px; color: var(--ink2) }
+.flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px }
+.flow span { background: var(--panel); border-radius: 99px; padding: 6px 12px }
+.flow i { color: var(--ink2); font-style: normal }
+.history { display: grid; gap: 10px }
+.ver { background: var(--panel); border-radius: var(--radius); padding: 16px 20px }
+.ver header { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline }
+.ver b { font-family: var(--mono) } .ver .t { font-weight: 600 } .ver time { margin-left: auto; color: var(--ink2); font-size: 13px }
+.ver ul { margin: 8px 0 0; padding-left: 20px; font-size: 15px }
+.ver .lbl { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink2); margin-top: 8px }
+.ver.latest { outline: 2px solid var(--ginger) }
+details.more summary { cursor: pointer; color: var(--blue); font-weight: 600; padding: 6px 0 }
+.fine { font-size: 14px; color: var(--ink2); border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 8px }
+
+@media (max-width: 760px) {
+  .hero, .pens, .grid3 { grid-template-columns: minmax(0, 1fr) }
+  .ticket { transform: none }
+  ol.steps > li { padding-left: 58px }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .brand svg { animation: bob 3.2s ease-in-out infinite }
+  @keyframes bob { 50% { transform: translateY(-4px) rotate(-3deg) } }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <div class="brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2997ff"/><stop offset="1" stop-color="#0060df"/></linearGradient></defs>
+          <rect width="64" height="64" rx="15" fill="url(#lg)"/><path d="M15 27 L19 9 L30 20 Z M49 27 L45 9 L34 20 Z" fill="#ffb347"/><ellipse cx="32" cy="35" rx="20" ry="17" fill="#ffb347"/>
+          <ellipse cx="25" cy="33" rx="2.6" ry="3.3" fill="#2b2118"/><ellipse cx="39" cy="33" rx="2.6" ry="3.3" fill="#2b2118"/><path d="M30 39 h4 l-2 2.4z" fill="#e8737a"/></svg>
+        <div class="eyebrow">Version 1.9.1 · A real website</div>
+      </div>
+      <h1>Odds <span class="amp">&amp;</span> Whiskers</h1>
+      <p class="lede">A desktop app for Kalshi's 15-minute crypto contracts. It looks for the favourite in the last few minutes,
+        waits at the bid instead of chasing the price, and holds to the result — with three cat sidekicks keeping you company.
+        It runs on your own computer with your own Kalshi key.</p>
+      <div class="chips"><span class="chip">Windows</span><span class="chip">macOS</span><span class="chip g">Starts in practice mode</span><span class="chip g">Free updates</span></div>
+      <div class="cta"><button class="primary" id="jump">Download</button><button id="jumpguide">How to set it up</button></div>
+    </div>
+    <div class="ticket" aria-label="Example of the app's live price card">
+      <div class="row"><span class="coin">ETH</span><span class="clock">4:12 left</span></div>
+      <div class="px"><div><small>Up</small><b class="up">93¢</b></div><div><small>Down</small><b class="dn">8¢</b></div></div>
+      <div class="say"><b>Le Chonk:</b> Bid, don’t chase. Chasing is cardio.</div>
+      <small>Example card. The favourite is a side priced 88–97¢ with a spread of 3¢ or less.</small>
+    </div>
+  </header>
+
+  <section id="download" aria-labelledby="dl-h">
+    <div class="eyebrow">Fresh download</div>
+    <h2 id="dl-h">Pick your computer</h2>
+    <div class="kind"><b>These are starter packages, not one-click apps.</b>
+      <span class="muted">Each one is the app plus example settings and a <span class="file">START HERE.txt</span> guide. It needs
+      Python 3.12 (free); the installer checks for it and opens the download page if it's missing, then installs the rest by itself.
+      The packages aren't code-signed, so Windows or macOS asks once before running the installer. Check a download against its SHA-256 if you like.</span></div>
+    <div class="pens">
+      <article class="pen" id="pen-windows">
+        <div class="top"><div class="os"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4.6 10 3.5v7.7H2zM11 3.4 22 2v9.2H11zM2 12.2h8v7.7l-8-1.1zM11 12.2h11V22l-11-1.5z"/></svg></div>
+          <div><h3>Windows</h3><div class="muted">Windows 10 or 11</div></div></div>
+        <dl><dt>File</dt><dd class="mono">OddsAndWhiskers-1.9.1-windows.zip</dd><dt>Size</dt><dd>228 KB</dd><dt>Needs</dt><dd>Python 3.12</dd><dt>Tested</dt><dd>Install, launch and updates</dd><dt>SHA-256</dt><dd class="mono sha" title="0507b5538e68481a8a202c21a4d7e780bd914feeb4855632d828d2abd4de5d8e">0507b5538e68481a…</dd></dl>
+        <a class="btn" href="downloads/OddsAndWhiskers-1.9.1-windows.zip" download data-os="windows">Download for Windows</a>
+        <div class="status" aria-live="polite"></div>
+      </article>
+      <article class="pen" id="pen-macos">
+        <div class="top"><div class="os"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg></div>
+          <div><h3>macOS</h3><div class="muted">Apple silicon or Intel</div></div></div>
+        <dl><dt>File</dt><dd class="mono">OddsAndWhiskers-1.9.1-macos.zip</dd><dt>Size</dt><dd>216 KB</dd><dt>Needs</dt><dd>Python 3.12</dd><dt>Tested</dt><dd>Not yet run on a Mac</dd><dt>SHA-256</dt><dd class="mono sha" title="80322c6af998d2df4fa457865b5596a0e991e621b80401f5c22a9961475631ba">80322c6af998d2df…</dd></dl>
+        <div class="note">The Mac version mirrors the Windows one but hasn't been tried on a real Mac yet. Expect the first install to
+          possibly need a fix.</div>
+        <a class="btn" href="downloads/OddsAndWhiskers-1.9.1-macos.zip" download data-os="macos">Download for macOS</a>
+        <div class="status" aria-live="polite"></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="guide" aria-labelledby="guide-h">
+    <div class="eyebrow">Tutorial</div>
+    <h2 id="guide-h">Getting started</h2>
+    <div class="tabs" role="tablist" aria-label="Your computer">
+      <button role="tab" id="tab-windows" aria-controls="steps-windows" aria-selected="true">Windows</button>
+      <button role="tab" id="tab-macos" aria-controls="steps-macos" aria-selected="false">macOS</button>
+    </div>
+
+    <div id="steps-windows" role="tabpanel" aria-labelledby="tab-windows">
+      <ol class="steps">
+        <li><h3>Get Python 3.12</h3>
+          <p>Download the <b>Windows installer (64-bit)</b> from python.org. When it opens, tick <b>Add python.exe to PATH</b> and click
+            <b>Install Now</b>. Already have it? Skip this — the installer finds it.</p>
+          <p><a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">python.org/downloads/windows</a></p></li>
+        <li><h3>Unzip the package</h3>
+          <p>Right-click <span class="file">OddsAndWhiskers-1.9.1-windows.zip</span> → <b>Extract All…</b> → pick a place like <b>Documents</b>. You get a folder
+            called <span class="file">Odds and Whiskers</span>. Keep it there; the app lives in it.</p></li>
+        <li><h3>Run the installer</h3>
+          <p>Open the folder and double-click <span class="file">Install Odds and Whiskers.bat</span>. If Windows shows
+            “Windows protected your PC”, click <b>More info</b> → <b>Run anyway</b>. It takes a minute or two.</p></li>
+        <li><h3>Open it and practise</h3>
+          <p>Double-click the new <b>Odds &amp; Whiskers</b> icon on your Desktop. It starts in <b>practice mode</b>: fake money on
+            real Kalshi prices. Look around: Cat Corner, the Litter Box, Backtrack, the Clump slider. Hover anything to see what it means.</p></li>
+        <li class="real"><h3>Set up your Kalshi key <span class="muted">(real money only)</span></h3>
+          <p>On kalshi.com, open your account settings → <b>API keys</b> → create a key and download its private key file.
+            Then double-click <span class="file">Set up my Kalshi key.bat</span>: paste the Key ID, then drag the key file into the window.
+            The key stays on your computer.</p></li>
+        <li class="real"><h3>Move money to crypto <span class="muted">(if needed)</span></h3>
+          <p>Kalshi keeps money in sections. If yours isn't in the crypto section, double-click
+            <span class="file">Move money to crypto.bat</span>, enter an amount and type the confirmation phrase.</p></li>
+        <li class="real"><h3>Go live</h3>
+          <p>Double-click <span class="file">Go live.bat</span>. Choose the most money the bot may use and a risk level (start at Tiny),
+            then type the confirmation yourself. Open the Desktop icon again and it trades real money within those limits.
+            The confirmation lasts 30 days.</p></li>
+      </ol>
+    </div>
+
+    <div id="steps-macos" role="tabpanel" aria-labelledby="tab-macos" hidden>
+      <ol class="steps">
+        <li><h3>Get Python 3.12</h3>
+          <p>Download the <b>macOS 64-bit universal2 installer</b> for Python 3.12 from python.org and click through it.
+            The Python that comes with the Mac is too old.</p>
+          <p><a href="https://www.python.org/downloads/macos/" target="_blank" rel="noopener">python.org/downloads/macos</a></p></li>
+        <li><h3>Unzip the package</h3>
+          <p>Double-click <span class="file">OddsAndWhiskers-1.9.1-macos.zip</span> in Downloads, then drag the <span class="file">Odds and Whiskers</span>
+            folder into <b>Documents</b>. Keep it there; the app lives in it.</p></li>
+        <li><h3>Run the installer</h3>
+          <p>In the folder, <b>right-click</b> (or Control-click) <span class="file">Install Odds and Whiskers.command</span> and choose
+            <b>Open</b>, then <b>Open</b> again. macOS asks once because the file came from the internet. A Terminal window shows the progress.</p></li>
+        <li><h3>Open it and practise</h3>
+          <p>Double-click <b>Odds &amp; Whiskers</b> on your Desktop. It starts in <b>practice mode</b>: fake money on real Kalshi prices.
+            Keep the Mac plugged in and awake while it trades; it can't bet while the Mac sleeps.</p></li>
+        <li class="real"><h3>Set up your Kalshi key <span class="muted">(real money only)</span></h3>
+          <p>On kalshi.com, open your account settings → <b>API keys</b> → create a key and download its private key file.
+            Then open <span class="file">Set up my Kalshi key.command</span>: paste the Key ID, then drag the key file into the window.</p></li>
+        <li class="real"><h3>Move money to crypto <span class="muted">(if needed)</span></h3>
+          <p>If your money isn't in Kalshi's crypto section, open <span class="file">Move money to crypto.command</span>,
+            enter an amount and type the confirmation phrase.</p></li>
+        <li class="real"><h3>Go live</h3>
+          <p>Open <span class="file">Go live.command</span>. Choose the most money the bot may use and a risk level (start at Tiny),
+            then type the confirmation yourself. Open the Desktop app again and it trades real money within those limits.</p></li>
+      </ol>
+    </div>
+    <div class="note"><b>Real money is your call.</b> This strategy has not been shown to be profitable. A win pays a few cents per
+      contract and a loss costs the whole price. Start small, and use practice mode and the Litter Box first.</div>
+  </section>
+
+  <section aria-labelledby="yours-h">
+    <div class="eyebrow">Your setup stays yours</div>
+    <h2 id="yours-h">One app, separate accounts</h2>
+    <div class="grid3">
+      <div class="card"><h3>On your computer only</h3><p>Your Kalshi key, limits, settings, layouts, trade history and Litter Box results
+        never leave your computer and are never replaced by an update.</p></div>
+      <div class="card"><h3>Learns from you</h3><p>Strategy recommendations come from your own results. Nobody's account or bets are
+        shared — only the app itself is.</p></div>
+      <div class="card"><h3>Same updates everywhere</h3><p>Windows and Mac copies check this website for new versions. Every update
+        is signed, so the app only installs updates from the Odds &amp; Whiskers publisher.</p></div>
+    </div>
+    <h3>Getting updates</h3>
+    <p class="muted">Nothing to set up. The app checks this website for new versions twice an hour. When one is out, it shows
+      <b>Update available</b>. Click Install and it does this by itself:</p>
+    <div class="flow" aria-label="What happens when you install an update"><span>New bets pause</span><i>→</i><span>Waiting bids are cancelled</span><i>→</i>
+      <span>Your history and settings are backed up</span><i>→</i><span>The update installs</span><i>→</i><span>Every order is re-checked with Kalshi</span><i>→</i><span>Betting resumes</span></div>
+    <p class="muted">Bets that already filled are never touched. After each new version, a <b>What's new</b> popup shows once, and
+      <b>Settings → Updates</b> keeps the full history.</p>
+  </section>
+
+  <section aria-labelledby="new-h">
+    <div class="eyebrow">Update history</div>
+    <h2 id="new-h">What's new</h2>
+    <div class="history" id="history"></div>
+    <details class="more"><summary>Show older versions</summary><div class="history" id="older"></div></details>
+  </section>
+
+  <footer class="fine">
+    <p>Odds &amp; Whiskers (formerly Better Bot) is a personal project, not a Kalshi product. It trades only through your own Kalshi
+      account and key, within limits you choose.</p>
+    <p>Version 1.9.1 · released 2026-10-14.</p>
+  </footer>
+</div>
+
+<script>
+const CHANGELOG = [{"version": "1.9.1", "date": "2026-10-14", "title": "A real website", "added": ["Odds & Whiskers has its own website: pemdem.github.io/odds-and-whiskers — download for Windows or macOS straight from the page.", "The app also checks the website for new versions, so you get updates even without the shared OneDrive folder. Every update is still signed and checked before it can be installed."], "fixed": ["The download page no longer depends on Claude, so the buttons work for everyone."]}, {"version": "1.9.0", "date": "2026-10-14", "title": "The Play Pen Update", "added": ["New name: Odds & Whiskers.", "A download website with Windows and macOS starter packages and a step-by-step tutorial.", "macOS support: installer, launcher and the same setup steps as Windows (starter package, needs Python 3.12).", "A “What’s new” popup that appears once after each new version.", "Update history in Settings → Updates, with the version you have installed.", "Safe updates while trading: new bets pause, waiting bids are cancelled, your data is backed up, the update installs, and the bot checks every order with Kalshi before it starts betting again."], "fixed": ["Updates never replace anyone’s settings, keys, limits, layouts or history — each person keeps their own setup."]}, {"version": "1.8.0", "date": "2026-10-14", "title": "Share with friends", "added": ["Pick a version: choose a model, coins and risk level; each choice shows how the others did.", "A small Clump slider on every Litter Box model to test it at other risk levels with fake money.", "Hover tips on everything.", "Sharing: friends install their own copy with their own Kalshi key; your updates reach them through a signed update folder.", "Set up my Kalshi key, Go live and Move money to crypto helpers."], "fixed": ["The Original model can no longer drift with your live settings.", "Ideas only graduate with enough fresh bets on both sides.", "Coin choice is now part of what the learning loop tests.", "Forecasts count fees in the cost of each contract.", "Backtrack marks every waiting-at-the-bid fill as uncertain."]}, {"version": "1.7.0", "date": "2026-10-14", "title": "Learning loop", "added": ["The learning loop: ideas from Backtrack are frozen and tested on fresh markets before being recommended.", "Litter Box Season 2, the Recommended preset and the Clump slider for risk.", "Network-lost alerts and an everyday-behaviour guide in Settings."], "fixed": ["Background helpers no longer use up the live bot’s request budget."]}, {"version": "1.6.0", "date": "2026-10-14", "title": "Cat Corner", "added": ["Cat Corner home screen with Classic, Simple and Custom layouts, plus a Statistics tab."], "fixed": ["Profit history now uses every bet; the scorecard can’t say “ahead” on mixed bet sizes; Litter Box shows luck ranges on streaks."]}, {"version": "1.5.0", "date": "2026-10-14", "title": "Litter Box", "added": ["Litter Box: fake-money models trading live prices side by side.", "Walk-forward Backtrack, minimize/maximize sections, wide layout and sidekick logos."], "fixed": []}, {"version": "1.4.0", "date": "2026-10-13", "title": "Backtrack", "added": ["Backtrack replays the strategy on past prices.", "Movable, resizable sections, Simple mode and the bongo-style cats."], "fixed": []}, {"version": "1.3.0", "date": "2026-10-13", "title": "Three cats", "added": ["Biscuit, Le Chonk and Le Chill.", "Box-and-whisker forecast and a settings sidebar."], "fixed": []}, {"version": "1.2.0", "date": "2026-10-13", "title": "Desktop app", "added": ["Desktop app that runs in the background and restarts itself.", "Expandable trades, profit periods, odds format and a fat cat sidekick."], "fixed": []}, {"version": "1.1.0", "date": "2026-10-13", "title": "Restore points", "added": ["Restore points before every update and a Restart now button."], "fixed": []}, {"version": "1.0.0", "date": "2026-10-13", "title": "First version", "added": ["The favourite strategy on Kalshi 15-minute crypto contracts with paper, demo and live modes, safety limits, a dashboard and reports."], "fixed": []}];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'})[c]);
+const fdate = d => { try { return new Date(d + 'T12:00:00').toLocaleDateString(undefined, {month: 'short', day: 'numeric', year: 'numeric'}); } catch (e) { return d; } };
+const ver = (c, latest) => `<article class="ver${latest ? ' latest' : ''}"><header><b>${esc(c.version)}</b><span class="t">${esc(c.title || '')}</span>` +
+  `<time datetime="${esc(c.date)}">${esc(fdate(c.date))}</time></header>` +
+  (c.added && c.added.length ? `<div class="lbl">Added</div><ul>${c.added.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '') +
+  (c.fixed && c.fixed.length ? `<div class="lbl">Fixed</div><ul>${c.fixed.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '') + `</article>`;
+document.getElementById('history').innerHTML = CHANGELOG.slice(0, 2).map((c, i) => ver(c, i === 0)).join('');
+document.getElementById('older').innerHTML = CHANGELOG.slice(2).map(c => ver(c, false)).join('');
+
+// tabs: remember the choice; first visit guesses from the computer
+const tabs = ['windows', 'macos'];
+function pick(os) {
+  tabs.forEach(t => {
+    document.getElementById('tab-' + t).setAttribute('aria-selected', String(t === os));
+    document.getElementById('steps-' + t).hidden = t !== os;
+    document.getElementById('pen-' + t).classList.toggle('mine', t === os);
+  });
+  try { localStorage.setItem('ow-os', os); } catch (e) {}
+}
+let start = /Mac/i.test(navigator.platform || navigator.userAgent) ? 'macos' : 'windows';
+try { start = localStorage.getItem('ow-os') || start; } catch (e) {}
+pick(start);
+tabs.forEach(t => document.getElementById('tab-' + t).addEventListener('click', () => pick(t)));
+document.querySelector('.tabs').addEventListener('keydown', e => {
+  if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+  const cur = tabs.findIndex(t => document.getElementById('tab-' + t).getAttribute('aria-selected') === 'true');
+  const next = tabs[(cur + 1) % 2]; pick(next); document.getElementById('tab-' + next).focus();
+});
+document.getElementById('jump').onclick = () => document.getElementById('download').scrollIntoView({behavior: 'smooth'});
+document.getElementById('jumpguide').onclick = () => document.getElementById('guide').scrollIntoView({behavior: 'smooth'});
+
+// after a download starts, point to the next step
+document.querySelectorAll('a[data-os]').forEach(a => a.addEventListener('click', () => {
+  const st = a.nextElementSibling; st.className = 'status ok';
+  st.textContent = 'Downloading. Next: follow the steps below.'; pick(a.dataset.os);
+}));
+</script>
+</body>
+</html>

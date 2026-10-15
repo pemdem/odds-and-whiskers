@@ -1,13 +1,13 @@
 {
  "app": "Odds & Whiskers",
- "version": "2.0.2",
- "zip": "BetterBot-2.0.2.zip",
- "sha256": "25619c66d74568fbdda5ea003eb2b58c8b64a125e5485750ff2f7423fcb6acd1",
- "notes": "Easy Windows install: Windows: one double-click installs everything. No Python download, no settings to change: if your PC has no Python, the installer fetches its own copy and checks its fingerprint first. It then opens the app by itself and adds icons to the Desktop and Start menu. Windows: the app now lives in your user folder (AppData\\Local\\Odds and Whiskers), so you can delete the download afterwards. Running the installer again repairs it without touching your settings, key or data. Two tutorials: a Quick tour (the essentials, about a minute) and a Full tour (every part of the app, about five minutes). Pick one from Help \u2192 Show me around or Settings \u2192 General.",
- "published_at": 1792102159.2018535,
- "built_at": 1792102159.6017447,
+ "version": "2.1.0",
+ "zip": "BetterBot-2.1.0.zip",
+ "sha256": "1015475b060a78eeb0d4c364ef373b514f62fb0718ffcb8b82c5f712314e281b",
+ "notes": "Your Sidekick: Your sidekick answers: the one you chose in Settings \u2192 Sidekick answers every question in its own voice. No more being passed between cats. It understands everyday wording and typos. \u201cWhat coin is performing best?\u201d (even \u201cwaht coin is perfoming best\u201d) shows the real results per coin: your own bets, the Litter Box\u2019s one-coin models and Backtrack, each labelled with when it was read. It remembers the conversation while the app is open, so follow-ups like \u201cwhy?\u201d, \u201cwhat about SOL?\u201d or \u201ccompare it to ETH\u201d just work.",
+ "published_at": 1792104030.9293797,
+ "built_at": 1792104031.3126433,
  "downloads": {
-  "windows": "../downloads/OddsAndWhiskers-2.0.2-windows.zip",
-  "macos": "../downloads/OddsAndWhiskers-2.0.2-macos.zip"
+  "windows": "../downloads/OddsAndWhiskers-2.1.0-windows.zip",
+  "macos": "../downloads/OddsAndWhiskers-2.1.0-macos.zip"
  }
 }

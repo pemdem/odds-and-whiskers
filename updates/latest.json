@@ -1,13 +1,13 @@
 {
  "app": "Odds & Whiskers",
- "version": "1.10.1",
- "zip": "BetterBot-1.10.1.zip",
- "sha256": "84f90950f87a3c27d4f143ca48cbb0ef572c1c237495e7625579dc4bfc90091d",
- "notes": "Litter Box fix: ",
- "published_at": 1792029353.885569,
- "built_at": 1792079582.452652,
+ "version": "1.11.0",
+ "zip": "BetterBot-1.11.0.zip",
+ "sha256": "b55b637601fc5a7852bed8714b1e58b8703d2700928310c3a9d03e80610942b2",
+ "notes": "Easy Setup: Mac: one \u201cOdds & Whiskers Setup\u201d app installs everything with clicks \u2014 it brings its own Python, so there\u2019s no Terminal and no python.org step. A welcome wizard for new copies: practice mode, connecting your Kalshi account, moving money and switching to real money, all inside the app. Your Kalshi key can be set up in the app (Settings \u2192 Kalshi account). It\u2019s stored encrypted on this computer and locked by the Mac Keychain or Windows Credential Manager \u2014 never uploaded, never shown again.",
+ "published_at": 1792080894.1893883,
+ "built_at": 1792080894.7944055,
  "downloads": {
-  "windows": "../downloads/OddsAndWhiskers-1.10.1-windows.zip",
-  "macos": "../downloads/OddsAndWhiskers-1.10.1-macos.zip"
+  "windows": "../downloads/OddsAndWhiskers-1.11.0-windows.zip",
+  "macos": "../downloads/OddsAndWhiskers-1.11.0-macos.zip"
  }
 }

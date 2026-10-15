@@ -1,13 +1,13 @@
 {
  "app": "Odds & Whiskers",
- "version": "1.9.2",
- "zip": "BetterBot-1.9.2.zip",
- "sha256": "9e37cbe58eab597e4a2e0619a0b9ef2cb92e67962b1be4c5ce6a814bec5205c2",
- "notes": "Mac install fix: Works with Python 3.12, 3.13 and 3.14. The installers pick a Python that works and say exactly what to install if none is found.",
- "published_at": 1792023006.177601,
- "built_at": 1792023006.6035502,
+ "version": "1.10.0",
+ "zip": "BetterBot-1.10.0.zip",
+ "sha256": "1b0d1386e9772ba59b44ace508f4ae19f78001046c970b3b7e0d55e9ea5ef756",
+ "notes": "The Automod Update: A guided tutorial: a one-minute tour of every part of the app (Settings \u2192 General \u2192 Show me around). Real vs Simulated in Cat Corner: slide between your real bot and \u201cSimulated you\u201d, a fake-money twin with your exact settings, coins and limits on the same live prices. Cat Chat is customizable: click a cat (or \u21c4) to choose who presents each card.",
+ "published_at": 1792029162.17987,
+ "built_at": 1792029162.4089406,
  "downloads": {
-  "windows": "../downloads/OddsAndWhiskers-1.9.2-windows.zip",
-  "macos": "../downloads/OddsAndWhiskers-1.9.2-macos.zip"
+  "windows": "../downloads/OddsAndWhiskers-1.10.0-windows.zip",
+  "macos": "../downloads/OddsAndWhiskers-1.10.0-macos.zip"
  }
 }

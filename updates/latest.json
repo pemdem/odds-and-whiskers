@@ -1,13 +1,13 @@
 {
  "app": "Odds & Whiskers",
- "version": "2.0.0",
- "zip": "BetterBot-2.0.0.zip",
- "sha256": "2fc352edead6af6cfb74c734639ea916de663ac70d40a84d1914abc9e81e25a9",
- "notes": "The Big Fat Cat Update: Cat Council: ask your sidekicks anything \u2014 click your sidekick, \u201cAsk\u201d on a Cat Chat card, or Help \u2192 Ask the cats. Biscuit knows your money and what happened while you were away, Le Chonk your risk and why trading stopped, Le Chill your strategies and experiments, Katya your losses and anything unusual (still a secret). Every answer uses your real balances, bets, settings, logs and experiment results, labels each number (real money, practice, simulated, historical test, estimate, live market) with the time it was read, shows the evidence and how sure it is, and says when it doesn\u2019t know. The cats can open the right screen, preview a Clump change, start a fake-money experiment, fetch current prices and offer to resume \u2014 real-money changes still need the usual confirmations. They work offline, for free.",
- "published_at": 1792084733.8986835,
- "built_at": 1792084734.3746712,
+ "version": "2.0.1",
+ "zip": "BetterBot-2.0.1.zip",
+ "sha256": "849d6410ddee8c6e95ce11b252c4adcfa8954dada5ad8e9820b614135900d441",
+ "notes": "Nothing gets lost: The backup taken before every update now includes the whole Litter Box (every model\u2019s fake-money bets, risk-level copies and results), the learning loop and your encrypted key vault \u2014 next to your trade history and settings. Your layout and display choices (sections, text size, theme, chosen cats) are also kept in your own data folder, so they come back by themselves if the app window\u2019s storage is ever cleared. Each part of the page now draws on its own: if one part ever fails, your balance, account and updates still show.",
+ "published_at": 1792085812.705338,
+ "built_at": 1792085816.9909363,
  "downloads": {
-  "windows": "../downloads/OddsAndWhiskers-2.0.0-windows.zip",
-  "macos": "../downloads/OddsAndWhiskers-2.0.0-macos.zip"
+  "windows": "../downloads/OddsAndWhiskers-2.0.1-windows.zip",
+  "macos": "../downloads/OddsAndWhiskers-2.0.1-macos.zip"
  }
 }

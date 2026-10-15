@@ -1,13 +1,13 @@
 {
  "app": "Odds & Whiskers",
- "version": "1.10.0",
- "zip": "BetterBot-1.10.0.zip",
- "sha256": "1b0d1386e9772ba59b44ace508f4ae19f78001046c970b3b7e0d55e9ea5ef756",
- "notes": "The Automod Update: A guided tutorial: a one-minute tour of every part of the app (Settings \u2192 General \u2192 Show me around). Real vs Simulated in Cat Corner: slide between your real bot and \u201cSimulated you\u201d, a fake-money twin with your exact settings, coins and limits on the same live prices. Cat Chat is customizable: click a cat (or \u21c4) to choose who presents each card.",
- "published_at": 1792029162.17987,
- "built_at": 1792029162.4089406,
+ "version": "1.10.1",
+ "zip": "BetterBot-1.10.1.zip",
+ "sha256": "84f90950f87a3c27d4f143ca48cbb0ef572c1c237495e7625579dc4bfc90091d",
+ "notes": "Litter Box fix: ",
+ "published_at": 1792029353.885569,
+ "built_at": 1792029354.1078215,
  "downloads": {
-  "windows": "../downloads/OddsAndWhiskers-1.10.0-windows.zip",
-  "macos": "../downloads/OddsAndWhiskers-1.10.0-macos.zip"
+  "windows": "../downloads/OddsAndWhiskers-1.10.1-windows.zip",
+  "macos": "../downloads/OddsAndWhiskers-1.10.1-macos.zip"
  }
 }

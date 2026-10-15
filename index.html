@@ -141,6 +141,12 @@ details.more summary { cursor: pointer; color: var(--blue); font-weight: 600; pa
   .brand svg { animation: bob 3.2s ease-in-out infinite }
   @keyframes bob { 50% { transform: translateY(-4px) rotate(-3deg) } }
 }
+
+  .guidebar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .tabs.lvl button[aria-pressed="true"] { background: var(--blue); color: #fff }
+  body[data-level="basic"] .lvl-full, body[data-level="full"] .lvl-basic { display: none !important; }
+  .faq dt { font-weight: 600; margin-top: 12px; }
+  .faq dd { margin: 4px 0 0; color: var(--ink2) }
 </style>
 </head>
 <body>
@@ -151,7 +157,7 @@ details.more summary { cursor: pointer; color: var(--blue); font-weight: 600; pa
         <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2997ff"/><stop offset="1" stop-color="#0060df"/></linearGradient></defs>
           <rect width="64" height="64" rx="15" fill="url(#lg)"/><path d="M15 27 L19 9 L30 20 Z M49 27 L45 9 L34 20 Z" fill="#ffb347"/><ellipse cx="32" cy="35" rx="20" ry="17" fill="#ffb347"/>
           <ellipse cx="25" cy="33" rx="2.6" ry="3.3" fill="#2b2118"/><ellipse cx="39" cy="33" rx="2.6" ry="3.3" fill="#2b2118"/><path d="M30 39 h4 l-2 2.4z" fill="#e8737a"/></svg>
-        <div class="eyebrow">Version 2.0.1 · Nothing gets lost</div>
+        <div class="eyebrow">Version 2.0.2 · Easy Windows install</div>
       </div>
       <h1>Odds <span class="amp">&amp;</span> Whiskers</h1>
       <p class="lede">A desktop app for Kalshi's 15-minute crypto contracts. It looks for the favourite in the last few minutes,
@@ -171,26 +177,26 @@ details.more summary { cursor: pointer; color: var(--blue); font-weight: 600; pa
   <section id="download" aria-labelledby="dl-h">
     <div class="eyebrow">Fresh download</div>
     <h2 id="dl-h">Pick your computer</h2>
-    <div class="kind"><b>Mac: one Setup app. Windows: a starter package.</b>
-      <span class="muted">On a Mac, <span class="file">Odds &amp; Whiskers Setup</span> installs everything with clicks, including its own Python.
-      On Windows you need Python 3.12, 3.13 or 3.14 (free; the installer checks and opens the download page if it's missing).
-      Neither is code-signed with a paid certificate, so macOS or Windows asks once before the first run. After that, your Kalshi key,
+    <div class="kind"><b>Mac: one Setup app. Windows: one double-click installer.</b>
+      <span class="muted">On a Mac, <span class="file">Odds &amp; Whiskers Setup</span> installs everything with clicks. On Windows, one
+      double-click on <span class="file">Install Odds and Whiskers</span> does it all and opens the app. Neither needs Python installed first:
+      each brings its own if your computer has none, and checks it before use. Neither is code-signed with a paid certificate, so macOS or Windows asks once before the first run. After that, your Kalshi key,
       money and real-money switch are all set up inside the app. Check a download against its SHA-256 if you like.</span></div>
     <div class="pens">
       <article class="pen" id="pen-windows">
         <div class="top"><div class="os"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4.6 10 3.5v7.7H2zM11 3.4 22 2v9.2H11zM2 12.2h8v7.7l-8-1.1zM11 12.2h11V22l-11-1.5z"/></svg></div>
           <div><h3>Windows</h3><div class="muted">Windows 10 or 11</div></div></div>
-        <dl><dt>File</dt><dd class="mono">OddsAndWhiskers-2.0.1-windows.zip</dd><dt>Size</dt><dd>314 KB</dd><dt>Needs</dt><dd>Python 3.12–3.14</dd><dt>Tested</dt><dd>Install, launch and updates</dd><dt>SHA-256</dt><dd class="mono sha" title="95b94c5f40f2fe6ed86255cd1f4741fb68d89148ce3275ef0234f47239ce04a6">95b94c5f40f2fe6e…</dd></dl>
-        <a class="btn" href="downloads/OddsAndWhiskers-2.0.1-windows.zip" download data-os="windows">Download for Windows</a>
+        <dl><dt>File</dt><dd class="mono">OddsAndWhiskers-2.0.2-windows.zip</dd><dt>Size</dt><dd>322 KB</dd><dt>Needs</dt><dd>Nothing — the installer brings its own Python</dd><dt>Tested</dt><dd>Install, launch and updates</dd><dt>SHA-256</dt><dd class="mono sha" title="f4547fde3c0670473fa5390421096edbeb3485759fd1b1d5ec4a6fbfbe29440b">f4547fde3c067047…</dd></dl>
+        <a class="btn" href="downloads/OddsAndWhiskers-2.0.2-windows.zip" download data-os="windows">Download for Windows</a>
         <div class="status" aria-live="polite"></div>
       </article>
       <article class="pen" id="pen-macos">
         <div class="top"><div class="os"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg></div>
           <div><h3>macOS</h3><div class="muted">Apple silicon or Intel</div></div></div>
-        <dl><dt>File</dt><dd class="mono">OddsAndWhiskers-2.0.1-macos.zip</dd><dt>Size</dt><dd>326 KB</dd><dt>Needs</dt><dd>Nothing — Setup brings its own Python</dd><dt>Tested</dt><dd>Not yet run on a Mac</dd><dt>SHA-256</dt><dd class="mono sha" title="e31191b2c8b40b9ddd69b48f915342a345ed103974d8104f631f070264eee2ce">e31191b2c8b40b9d…</dd></dl>
+        <dl><dt>File</dt><dd class="mono">OddsAndWhiskers-2.0.2-macos.zip</dd><dt>Size</dt><dd>332 KB</dd><dt>Needs</dt><dd>Nothing — Setup brings its own Python</dd><dt>Tested</dt><dd>Not yet run on a Mac</dd><dt>SHA-256</dt><dd class="mono sha" title="163402fef3dbd0b235926e0c22c6217f4ba593ab0dc6e5af5a27680a07ede58c">163402fef3dbd0b2…</dd></dl>
         <div class="note">The Mac version mirrors the Windows one but hasn't been tried on a real Mac yet. Expect the first install to
           possibly need a fix.</div>
-        <a class="btn" href="downloads/OddsAndWhiskers-2.0.1-macos.zip" download data-os="macos">Download for macOS</a>
+        <a class="btn" href="downloads/OddsAndWhiskers-2.0.2-macos.zip" download data-os="macos">Download for macOS</a>
         <div class="status" aria-live="polite"></div>
       </article>
     </div>
@@ -199,37 +205,65 @@ details.more summary { cursor: pointer; color: var(--blue); font-weight: 600; pa
   <section id="guide" aria-labelledby="guide-h">
     <div class="eyebrow">Tutorial</div>
     <h2 id="guide-h">Getting started</h2>
-    <div class="tabs" role="tablist" aria-label="Your computer">
-      <button role="tab" id="tab-windows" aria-controls="steps-windows" aria-selected="true">Windows</button>
-      <button role="tab" id="tab-macos" aria-controls="steps-macos" aria-selected="false">macOS</button>
+    <div class="guidebar">
+      <div class="tabs" role="tablist" aria-label="Your computer">
+        <button role="tab" id="tab-windows" aria-controls="steps-windows" aria-selected="true">Windows</button>
+        <button role="tab" id="tab-macos" aria-controls="steps-macos" aria-selected="false">macOS</button>
+      </div>
+      <div class="tabs lvl" role="group" aria-label="How much detail">
+        <button id="lvl-basic" aria-pressed="true">Quick start</button>
+        <button id="lvl-full" aria-pressed="false">Full guide</button>
+      </div>
     </div>
+    <p class="muted lvl-basic">Three steps, about five minutes. Want every detail and what to do if something goes wrong? Switch to <b>Full guide</b>.</p>
+    <p class="muted lvl-full">Every step in detail, how to use the app, updates, and fixes for common problems.</p>
 
     <div id="steps-windows" role="tabpanel" aria-labelledby="tab-windows">
-      <ol class="steps">
-        <li><h3>Get Python 3.14</h3>
-          <p>On python.org, download the <b>Windows installer (64-bit)</b> for Python <b>3.14</b> (3.12 and 3.13 work too; 3.15 doesn't yet).
-            When it opens, tick <b>Add python.exe to PATH</b> and click <b>Install Now</b>. Already have one of those? Skip this — the installer finds it.</p>
-          <p><a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">python.org/downloads/windows</a></p></li>
-        <li><h3>Unzip the package</h3>
-          <p>Right-click <span class="file">OddsAndWhiskers-2.0.1-windows.zip</span> → <b>Extract All…</b> → pick a place like <b>Documents</b>. You get a folder
-            called <span class="file">Odds and Whiskers</span>. Keep it there; the app lives in it.</p></li>
+      <ol class="steps lvl-basic">
+        <li><h3>Download and unzip</h3>
+          <p>Click <b>Download for Windows</b> above. Right-click the zip → <b>Extract All…</b> → <b>Extract</b>.</p></li>
+        <li><h3>Double-click Install Odds and Whiskers</h3>
+          <p>If Windows says “Windows protected your PC”, click <b>More info</b> → <b>Run anyway</b>. Wait 2 to 3 minutes; it opens the app by itself.</p></li>
+        <li><h3>Follow the welcome</h3>
+          <p>You start in <b>practice mode</b> (fake money, real prices). The welcome connects your Kalshi account when you’re ready, and offers a tour.</p></li>
+      </ol>
+      <ol class="steps lvl-full">
+        <li><h3>Download the package</h3>
+          <p>Click <b>Download for Windows</b> above to get <span class="file">OddsAndWhiskers-2.0.2-windows.zip</span> (322 KB). Works on Windows 10 and 11.
+            Nothing else to install first.</p></li>
+        <li><h3>Unzip it</h3>
+          <p>In your Downloads folder, right-click the zip → <b>Extract All…</b> → <b>Extract</b>. A folder called
+            <span class="file">Odds and Whiskers</span> opens. (Double-clicking inside the zip without extracting won’t work; the installer tells you if that happens.)</p></li>
         <li><h3>Run the installer</h3>
-          <p>Open the folder and double-click <span class="file">Install Odds and Whiskers.bat</span>. If Windows shows
-            “Windows protected your PC”, click <b>More info</b> → <b>Run anyway</b>. It takes a minute or two.</p></li>
-        <li><h3>Open it and practise</h3>
-          <p>Double-click the new <b>Odds &amp; Whiskers</b> icon on your Desktop. It starts in <b>practice mode</b>: fake money on
-            real Kalshi prices. Look around: Cat Corner, the Litter Box, Backtrack, the Clump slider. Hover anything to see what it means.</p></li>
+          <p>Double-click <span class="file">Install Odds and Whiskers</span>. Windows may show “Windows protected your PC” because the app isn’t
+            signed with a paid certificate: click <b>More info</b> → <b>Run anyway</b>. A window shows four steps:</p>
+          <p class="muted">1 · it copies the app to your user folder (<span class="file">AppData\Local\Odds and Whiskers</span>), so you can delete the download afterwards ·
+            2 · it uses your Python 3.11–3.14 if you have one, otherwise it downloads its own private copy and checks its fingerprint · 3 · it installs the parts the app needs ·
+            4 · it adds an icon to your Desktop and Start menu, then opens Odds &amp; Whiskers.</p></li>
+        <li><h3>Practise first</h3>
+          <p>The app starts in <b>practice mode</b>: fake money on real Kalshi prices. Take the <b>Quick tour</b> (1 minute) or the <b>Full tour</b>
+            (5 minutes) from the welcome or <b>Help (?) → Show me around</b>. Hover anything to see what it means.</p></li>
         <li class="real"><h3>Connect your Kalshi account <span class="muted">(real money only)</span></h3>
-          <p>On kalshi.com, open your account settings → <b>API keys</b> → create a key. The app’s welcome (or <b>Settings → Kalshi account</b>)
-            asks for the Key ID and the key file. It’s stored only on your PC, encrypted and locked by Windows Credential Manager.</p></li>
-        <li class="real"><h3>Move money and go live</h3>
-          <p>Still in the app: move money into Kalshi’s crypto section if needed, then choose the most the bot may use and a risk level
-            (start at Tiny), and type the confirmation phrase yourself. The app reopens in real-money mode. The confirmation lasts 30 days.</p></li>
+          <p>On kalshi.com, open your account settings → <b>API keys</b> → <b>Create key</b>. Kalshi shows a <b>Key ID</b> and downloads a
+            private key file. In the app’s welcome (or <b>Settings → Kalshi account</b>) paste the Key ID and choose the file. It’s stored only on
+            your PC, encrypted and locked by Windows Credential Manager, and never shown again.</p></li>
+        <li class="real"><h3>Move money and go live <span class="muted">(real money only)</span></h3>
+          <p>If your money is in another part of your Kalshi account, the app moves it to the crypto section. Then pick the most the bot may use and a
+            risk level (start at <b>Tiny</b>) and type the confirmation phrase shown. Capitals and spaces don’t matter, and a ✓ appears when it
+            matches. The app reopens in real-money mode. The confirmation lasts 30 days.</p></li>
       </ol>
     </div>
 
     <div id="steps-macos" role="tabpanel" aria-labelledby="tab-macos" hidden>
-      <ol class="steps">
+      <ol class="steps lvl-basic">
+        <li><h3>Download and open Setup</h3>
+          <p>Click <b>Download for macOS</b> above, open the download and double-click <span class="file">Odds &amp; Whiskers Setup</span>.</p></li>
+        <li><h3>Allow it once, then Install</h3>
+          <p>If macOS blocks it: <b>System Settings → Privacy &amp; Security</b> → <b>Open Anyway</b>. Click <b>Install</b> and wait 2 to 3 minutes.</p></li>
+        <li><h3>Follow the welcome</h3>
+          <p>You start in <b>practice mode</b> (fake money, real prices). The welcome connects your Kalshi account when you’re ready, and offers a tour.</p></li>
+      </ol>
+      <ol class="steps lvl-full">
         <li><h3>Open Odds &amp; Whiskers Setup</h3>
           <p>Open the download (Safari unzips it for you) and double-click <span class="file">Odds &amp; Whiskers Setup</span>.
             No Terminal, and no separate Python install: Setup brings its own.</p></li>
@@ -240,16 +274,36 @@ details.more summary { cursor: pointer; color: var(--blue); font-weight: 600; pa
         <li><h3>Click Install</h3>
           <p>Setup copies the app, downloads its own Python (checked before use) and installs everything by itself, in 2 to 3 minutes.
             Odds &amp; Whiskers then opens and appears on your Desktop and in Applications.</p></li>
-        <li><h3>Follow the welcome</h3>
-          <p>It starts in <b>practice mode</b>: fake money on real Kalshi prices. The welcome walks you through the rest, all inside the app.
-            Keep the Mac plugged in and awake while it trades; it can’t bet while the Mac sleeps.</p></li>
+        <li><h3>Practise first</h3>
+          <p>It starts in <b>practice mode</b>: fake money on real Kalshi prices. Take the <b>Quick tour</b> or the <b>Full tour</b> from the welcome
+            or <b>Help (?) → Show me around</b>. Keep the Mac plugged in and awake while it trades; it can’t bet while the Mac sleeps.</p></li>
         <li class="real"><h3>Connect your Kalshi account <span class="muted">(real money only)</span></h3>
           <p>On kalshi.com, open your account settings → <b>API keys</b> → create a key. In the app, paste the Key ID and choose the key file.
             It’s stored only on your Mac, encrypted and locked by your Keychain.</p></li>
-        <li class="real"><h3>Move money and go live</h3>
+        <li class="real"><h3>Move money and go live <span class="muted">(real money only)</span></h3>
           <p>Still in the app: move money into Kalshi’s crypto section if needed, then choose the most the bot may use and a risk
-            level (start at Tiny), and type the confirmation phrase yourself. The app reopens in real-money mode.</p></li>
+            level (start at Tiny), and type the confirmation phrase shown. Capitals and spaces don’t matter, and a ✓ appears when it matches.</p></li>
       </ol>
+    </div>
+
+    <div class="lvl-full">
+      <h3>Using the app</h3>
+      <div class="grid3">
+        <div class="card"><h3>Status</h3><p>The chip at the top says Running, Watching, Paused, Offline or Needs attention. Click it for each coin’s “Why no bet?”.</p></div>
+        <div class="card"><h3>Pause or stop</h3><p><b>Pause</b> stops new bets. <b>Kill switch</b> blocks them until you undo it. Closing the window doesn’t stop the bot; Help → Close, pause or turn off explains the difference.</p></div>
+        <div class="card"><h3>Ask the cats</h3><p>Click your sidekick: “What happened while I was away?”, “Why did trading stop?”. Answers use your own data and label every number.</p></div>
+      </div>
+      <h3>Updates</h3>
+      <p class="muted">The app checks this website twice an hour and shows <b>Update available</b>. Click Install: new bets pause, your data is backed up
+        (history, settings, Litter Box, key vault), the update installs and every order is re-checked before betting resumes.</p>
+      <h3>If something goes wrong</h3>
+      <dl class="faq">
+        <dt>“This needs the whole folder”</dt><dd>You opened the installer inside the zip. Right-click the zip → Extract All…, then run it from the extracted folder.</dd>
+        <dt>The installer stopped with a message</dt><dd>Usually the internet dropped. Run <span class="file">Install Odds and Whiskers</span> again; it picks up where it left off and never touches your settings, key or data.</dd>
+        <dt>The confirmation phrase “doesn’t match”</dt><dd>Type the words and the code exactly as shown (capitals, spaces and dashes don’t matter). If you change the amount, cap or risk level afterwards, the phrase changes: the app asks for the new one.</dd>
+        <dt>The window looks empty</dt><dd>Close it and open Odds &amp; Whiskers again from its icon. The bot keeps running in the background either way.</dd>
+        <dt>Something else</dt><dd>Help (?) → <b>Export diagnostics</b> makes a small file without keys, balances or amounts. Send it to whoever shared the app with you.</dd>
+      </dl>
     </div>
     <div class="note"><b>Real money is your call.</b> This strategy has not been shown to be profitable. A win pays a few cents per
       contract and a loss costs the whole price. Start small, and use practice mode and the Litter Box first.</div>
@@ -305,12 +359,12 @@ details.more summary { cursor: pointer; color: var(--blue); font-weight: 600; pa
   <footer class="fine">
     <p>Odds &amp; Whiskers (formerly Better Bot) is a personal project, not a Kalshi product. It trades only through your own Kalshi
       account and key, within limits you choose.</p>
-    <p>Version 2.0.1 · released 2026-10-15.</p>
+    <p>Version 2.0.2 · released 2026-10-15.</p>
   </footer>
 </div>
 
 <script>
-const CHANGELOG = [{"version": "2.0.1", "date": "2026-10-15", "title": "Nothing gets lost", "added": ["The backup taken before every update now includes the whole Litter Box (every model’s fake-money bets, risk-level copies and results), the learning loop and your encrypted key vault — next to your trade history and settings.", "Your layout and display choices (sections, text size, theme, chosen cats) are also kept in your own data folder, so they come back by themselves if the app window’s storage is ever cleared.", "Each part of the page now draws on its own: if one part ever fails, your balance, account and updates still show."], "fixed": ["After updating to 2.0.0 the app window could show an empty balance, no Kalshi account and no updates. The bot kept trading and nothing was lost — a typo in one of the new page files stopped the page from drawing. Fixed, and new versions are now checked for this before they can be published."]}, {"version": "2.0.0", "date": "2026-10-15", "title": "The Big Fat Cat Update", "added": ["Cat Council: ask your sidekicks anything — click your sidekick, “Ask” on a Cat Chat card, or Help → Ask the cats. Biscuit knows your money and what happened while you were away, Le Chonk your risk and why trading stopped, Le Chill your strategies and experiments, Katya your losses and anything unusual (still a secret).", "Every answer uses your real balances, bets, settings, logs and experiment results, labels each number (real money, practice, simulated, historical test, estimate, live market) with the time it was read, shows the evidence and how sure it is, and says when it doesn’t know.", "The cats can open the right screen, preview a Clump change, start a fake-money experiment, fetch current prices and offer to resume — real-money changes still need the usual confirmations. They work offline, for free.", "Optional smarter answers with Claude AI, off by default: provider, cost and exactly what’s shared are shown before you turn it on, it uses your own Anthropic key (kept in the secure vault, never shown to the AI), and the app keeps working if it’s unavailable.", "Cat Nap: one clear status in the header — Running, Watching, Paused, Offline or Needs attention — with a plain explanation. Click it for each coin’s “Why no bet?”, taken from the strategy’s actual decision or the risk check.", "Sleep and connection recovery: after the computer sleeps or the internet comes back, the bot stops new bets, throws away old prices and re-checks every order and the balance with Kalshi before trading again.", "Daily recap (today or yesterday): profit/loss, fees, bets, open positions and Litter Box progress.", "Help menu: ask the cats, why no bet, daily recap, the tour, What’s new, Export diagnostics (no keys, IDs, emails, balances or amounts), and a clear choice between closing the window, pausing and turning off completely."], "fixed": ["The forecast chart no longer errors when the balance hasn’t been read yet.", "Simple mode shows the same clear status as the header."]}, {"version": "1.11.0", "date": "2026-10-15", "title": "Easy Setup", "added": ["Mac: one “Odds & Whiskers Setup” app installs everything with clicks — it brings its own Python, so there’s no Terminal and no python.org step.", "A welcome wizard for new copies: practice mode, connecting your Kalshi account, moving money and switching to real money, all inside the app.", "Your Kalshi key can be set up in the app (Settings → Kalshi account). It’s stored encrypted on this computer and locked by the Mac Keychain or Windows Credential Manager — never uploaded, never shown again.", "Real-money steps in the app still ask you to type a confirmation phrase, exactly like before."], "fixed": ["The website’s Mac instructions match what newer Macs show (Open Anyway in Privacy & Security)."]}, {"version": "1.10.1", "date": "2026-10-14", "title": "Litter Box fix", "added": [], "fixed": ["The Litter Box could stop updating its results (and stop listening for Stop) if the app read them at the exact moment they were saved. It now retries and keeps going."]}, {"version": "1.10.0", "date": "2026-10-14", "title": "The Automod Update", "added": ["A guided tutorial: a one-minute tour of every part of the app (Settings → General → Show me around).", "Real vs Simulated in Cat Corner: slide between your real bot and “Simulated you”, a fake-money twin with your exact settings, coins and limits on the same live prices.", "Cat Chat is customizable: click a cat (or ⇄) to choose who presents each card.", "Text size option in Settings → General (Small, Normal, Large, Extra large).", "Scroll fast and the cats look shocked.", "A secret sidekick. Rumour says you have to be very persistent with your favourite cat in Settings…", "A tribute at the bottom of the app: Go Buy Fredrick Irons Sweat Bags!"], "fixed": ["Banners at the top no longer flicker while a bid is cancelled or an update is installing; they slide in and fold away smoothly.", "During a restart the app shows one calm “Restarting…” message instead of flashing “Can’t reach the bot”.", "Numbers and cards only redraw when something actually changed, so the whole page feels steadier."]}, {"version": "1.9.2", "date": "2026-10-14", "title": "Mac install fix", "added": ["Works with Python 3.12, 3.13 and 3.14. The installers pick a Python that works and say exactly what to install if none is found."], "fixed": ["Installing on a Mac (or PC) with Python 3.14 failed with “Failed wheel build”: some parts had no ready-made packages for it. They now do, so nothing has to be compiled.", "Macs with Python from python.org can make secure connections to Kalshi and the website without running Apple’s certificate installer.", "A half-finished install is repaired automatically when you run the installer again."]}, {"version": "1.9.1", "date": "2026-10-14", "title": "A real website", "added": ["Odds & Whiskers has its own website: pemdem.github.io/odds-and-whiskers — download for Windows or macOS straight from the page.", "The app also checks the website for new versions, so you get updates even without the shared OneDrive folder. Every update is still signed and checked before it can be installed."], "fixed": ["The download page no longer depends on Claude, so the buttons work for everyone."]}, {"version": "1.9.0", "date": "2026-10-14", "title": "The Play Pen Update", "added": ["New name: Odds & Whiskers.", "A download website with Windows and macOS starter packages and a step-by-step tutorial.", "macOS support: installer, launcher and the same setup steps as Windows (starter package, needs Python 3.12).", "A “What’s new” popup that appears once after each new version.", "Update history in Settings → Updates, with the version you have installed.", "Safe updates while trading: new bets pause, waiting bids are cancelled, your data is backed up, the update installs, and the bot checks every order with Kalshi before it starts betting again."], "fixed": ["Updates never replace anyone’s settings, keys, limits, layouts or history — each person keeps their own setup."]}, {"version": "1.8.0", "date": "2026-10-14", "title": "Share with friends", "added": ["Pick a version: choose a model, coins and risk level; each choice shows how the others did.", "A small Clump slider on every Litter Box model to test it at other risk levels with fake money.", "Hover tips on everything.", "Sharing: friends install their own copy with their own Kalshi key; your updates reach them through a signed update folder.", "Set up my Kalshi key, Go live and Move money to crypto helpers."], "fixed": ["The Original model can no longer drift with your live settings.", "Ideas only graduate with enough fresh bets on both sides.", "Coin choice is now part of what the learning loop tests.", "Forecasts count fees in the cost of each contract.", "Backtrack marks every waiting-at-the-bid fill as uncertain."]}, {"version": "1.7.0", "date": "2026-10-14", "title": "Learning loop", "added": ["The learning loop: ideas from Backtrack are frozen and tested on fresh markets before being recommended.", "Litter Box Season 2, the Recommended preset and the Clump slider for risk.", "Network-lost alerts and an everyday-behaviour guide in Settings."], "fixed": ["Background helpers no longer use up the live bot’s request budget."]}, {"version": "1.6.0", "date": "2026-10-14", "title": "Cat Corner", "added": ["Cat Corner home screen with Classic, Simple and Custom layouts, plus a Statistics tab."], "fixed": ["Profit history now uses every bet; the scorecard can’t say “ahead” on mixed bet sizes; Litter Box shows luck ranges on streaks."]}, {"version": "1.5.0", "date": "2026-10-14", "title": "Litter Box", "added": ["Litter Box: fake-money models trading live prices side by side.", "Walk-forward Backtrack, minimize/maximize sections, wide layout and sidekick logos."], "fixed": []}, {"version": "1.4.0", "date": "2026-10-13", "title": "Backtrack", "added": ["Backtrack replays the strategy on past prices.", "Movable, resizable sections, Simple mode and the bongo-style cats."], "fixed": []}, {"version": "1.3.0", "date": "2026-10-13", "title": "Three cats", "added": ["Biscuit, Le Chonk and Le Chill.", "Box-and-whisker forecast and a settings sidebar."], "fixed": []}, {"version": "1.2.0", "date": "2026-10-13", "title": "Desktop app", "added": ["Desktop app that runs in the background and restarts itself.", "Expandable trades, profit periods, odds format and a fat cat sidekick."], "fixed": []}, {"version": "1.1.0", "date": "2026-10-13", "title": "Restore points", "added": ["Restore points before every update and a Restart now button."], "fixed": []}, {"version": "1.0.0", "date": "2026-10-13", "title": "First version", "added": ["The favourite strategy on Kalshi 15-minute crypto contracts with paper, demo and live modes, safety limits, a dashboard and reports."], "fixed": []}];
+const CHANGELOG = [{"version": "2.0.2", "date": "2026-10-15", "title": "Easy Windows install", "added": ["Windows: one double-click installs everything. No Python download, no settings to change: if your PC has no Python, the installer fetches its own copy and checks its fingerprint first. It then opens the app by itself and adds icons to the Desktop and Start menu.", "Windows: the app now lives in your user folder (AppData\\Local\\Odds and Whiskers), so you can delete the download afterwards. Running the installer again repairs it without touching your settings, key or data.", "Two tutorials: a Quick tour (the essentials, about a minute) and a Full tour (every part of the app, about five minutes). Pick one from Help → Show me around or Settings → General.", "The website’s guide has a Quick start and a Full guide, including what to do if something goes wrong."], "fixed": ["Connecting your Kalshi account: the phrase you type to move money or switch to real money said “doesn’t match” unless it was copied exactly, capitals and all. It now ignores capitals, spaces, dashes and O-for-0 mix-ups, shows a ✓ as soon as it matches, and starts the step again if you change the amount, cap or risk level after the phrase was shown. It still has to say the same thing: a different amount or code is refused.", "Running the Windows installer from inside the zip (without extracting it) now explains what to do instead of failing."]}, {"version": "2.0.1", "date": "2026-10-15", "title": "Nothing gets lost", "added": ["The backup taken before every update now includes the whole Litter Box (every model’s fake-money bets, risk-level copies and results), the learning loop and your encrypted key vault — next to your trade history and settings.", "Your layout and display choices (sections, text size, theme, chosen cats) are also kept in your own data folder, so they come back by themselves if the app window’s storage is ever cleared.", "Each part of the page now draws on its own: if one part ever fails, your balance, account and updates still show."], "fixed": ["After updating to 2.0.0 the app window could show an empty balance, no Kalshi account and no updates. The bot kept trading and nothing was lost — a typo in one of the new page files stopped the page from drawing. Fixed, and new versions are now checked for this before they can be published."]}, {"version": "2.0.0", "date": "2026-10-15", "title": "The Big Fat Cat Update", "added": ["Cat Council: ask your sidekicks anything — click your sidekick, “Ask” on a Cat Chat card, or Help → Ask the cats. Biscuit knows your money and what happened while you were away, Le Chonk your risk and why trading stopped, Le Chill your strategies and experiments, Katya your losses and anything unusual (still a secret).", "Every answer uses your real balances, bets, settings, logs and experiment results, labels each number (real money, practice, simulated, historical test, estimate, live market) with the time it was read, shows the evidence and how sure it is, and says when it doesn’t know.", "The cats can open the right screen, preview a Clump change, start a fake-money experiment, fetch current prices and offer to resume — real-money changes still need the usual confirmations. They work offline, for free.", "Optional smarter answers with Claude AI, off by default: provider, cost and exactly what’s shared are shown before you turn it on, it uses your own Anthropic key (kept in the secure vault, never shown to the AI), and the app keeps working if it’s unavailable.", "Cat Nap: one clear status in the header — Running, Watching, Paused, Offline or Needs attention — with a plain explanation. Click it for each coin’s “Why no bet?”, taken from the strategy’s actual decision or the risk check.", "Sleep and connection recovery: after the computer sleeps or the internet comes back, the bot stops new bets, throws away old prices and re-checks every order and the balance with Kalshi before trading again.", "Daily recap (today or yesterday): profit/loss, fees, bets, open positions and Litter Box progress.", "Help menu: ask the cats, why no bet, daily recap, the tour, What’s new, Export diagnostics (no keys, IDs, emails, balances or amounts), and a clear choice between closing the window, pausing and turning off completely."], "fixed": ["The forecast chart no longer errors when the balance hasn’t been read yet.", "Simple mode shows the same clear status as the header."]}, {"version": "1.11.0", "date": "2026-10-15", "title": "Easy Setup", "added": ["Mac: one “Odds & Whiskers Setup” app installs everything with clicks — it brings its own Python, so there’s no Terminal and no python.org step.", "A welcome wizard for new copies: practice mode, connecting your Kalshi account, moving money and switching to real money, all inside the app.", "Your Kalshi key can be set up in the app (Settings → Kalshi account). It’s stored encrypted on this computer and locked by the Mac Keychain or Windows Credential Manager — never uploaded, never shown again.", "Real-money steps in the app still ask you to type a confirmation phrase, exactly like before."], "fixed": ["The website’s Mac instructions match what newer Macs show (Open Anyway in Privacy & Security)."]}, {"version": "1.10.1", "date": "2026-10-14", "title": "Litter Box fix", "added": [], "fixed": ["The Litter Box could stop updating its results (and stop listening for Stop) if the app read them at the exact moment they were saved. It now retries and keeps going."]}, {"version": "1.10.0", "date": "2026-10-14", "title": "The Automod Update", "added": ["A guided tutorial: a one-minute tour of every part of the app (Settings → General → Show me around).", "Real vs Simulated in Cat Corner: slide between your real bot and “Simulated you”, a fake-money twin with your exact settings, coins and limits on the same live prices.", "Cat Chat is customizable: click a cat (or ⇄) to choose who presents each card.", "Text size option in Settings → General (Small, Normal, Large, Extra large).", "Scroll fast and the cats look shocked.", "A secret sidekick. Rumour says you have to be very persistent with your favourite cat in Settings…", "A tribute at the bottom of the app: Go Buy Fredrick Irons Sweat Bags!"], "fixed": ["Banners at the top no longer flicker while a bid is cancelled or an update is installing; they slide in and fold away smoothly.", "During a restart the app shows one calm “Restarting…” message instead of flashing “Can’t reach the bot”.", "Numbers and cards only redraw when something actually changed, so the whole page feels steadier."]}, {"version": "1.9.2", "date": "2026-10-14", "title": "Mac install fix", "added": ["Works with Python 3.12, 3.13 and 3.14. The installers pick a Python that works and say exactly what to install if none is found."], "fixed": ["Installing on a Mac (or PC) with Python 3.14 failed with “Failed wheel build”: some parts had no ready-made packages for it. They now do, so nothing has to be compiled.", "Macs with Python from python.org can make secure connections to Kalshi and the website without running Apple’s certificate installer.", "A half-finished install is repaired automatically when you run the installer again."]}, {"version": "1.9.1", "date": "2026-10-14", "title": "A real website", "added": ["Odds & Whiskers has its own website: pemdem.github.io/odds-and-whiskers — download for Windows or macOS straight from the page.", "The app also checks the website for new versions, so you get updates even without the shared OneDrive folder. Every update is still signed and checked before it can be installed."], "fixed": ["The download page no longer depends on Claude, so the buttons work for everyone."]}, {"version": "1.9.0", "date": "2026-10-14", "title": "The Play Pen Update", "added": ["New name: Odds & Whiskers.", "A download website with Windows and macOS starter packages and a step-by-step tutorial.", "macOS support: installer, launcher and the same setup steps as Windows (starter package, needs Python 3.12).", "A “What’s new” popup that appears once after each new version.", "Update history in Settings → Updates, with the version you have installed.", "Safe updates while trading: new bets pause, waiting bids are cancelled, your data is backed up, the update installs, and the bot checks every order with Kalshi before it starts betting again."], "fixed": ["Updates never replace anyone’s settings, keys, limits, layouts or history — each person keeps their own setup."]}, {"version": "1.8.0", "date": "2026-10-14", "title": "Share with friends", "added": ["Pick a version: choose a model, coins and risk level; each choice shows how the others did.", "A small Clump slider on every Litter Box model to test it at other risk levels with fake money.", "Hover tips on everything.", "Sharing: friends install their own copy with their own Kalshi key; your updates reach them through a signed update folder.", "Set up my Kalshi key, Go live and Move money to crypto helpers."], "fixed": ["The Original model can no longer drift with your live settings.", "Ideas only graduate with enough fresh bets on both sides.", "Coin choice is now part of what the learning loop tests.", "Forecasts count fees in the cost of each contract.", "Backtrack marks every waiting-at-the-bid fill as uncertain."]}, {"version": "1.7.0", "date": "2026-10-14", "title": "Learning loop", "added": ["The learning loop: ideas from Backtrack are frozen and tested on fresh markets before being recommended.", "Litter Box Season 2, the Recommended preset and the Clump slider for risk.", "Network-lost alerts and an everyday-behaviour guide in Settings."], "fixed": ["Background helpers no longer use up the live bot’s request budget."]}, {"version": "1.6.0", "date": "2026-10-14", "title": "Cat Corner", "added": ["Cat Corner home screen with Classic, Simple and Custom layouts, plus a Statistics tab."], "fixed": ["Profit history now uses every bet; the scorecard can’t say “ahead” on mixed bet sizes; Litter Box shows luck ranges on streaks."]}, {"version": "1.5.0", "date": "2026-10-14", "title": "Litter Box", "added": ["Litter Box: fake-money models trading live prices side by side.", "Walk-forward Backtrack, minimize/maximize sections, wide layout and sidekick logos."], "fixed": []}, {"version": "1.4.0", "date": "2026-10-13", "title": "Backtrack", "added": ["Backtrack replays the strategy on past prices.", "Movable, resizable sections, Simple mode and the bongo-style cats."], "fixed": []}, {"version": "1.3.0", "date": "2026-10-13", "title": "Three cats", "added": ["Biscuit, Le Chonk and Le Chill.", "Box-and-whisker forecast and a settings sidebar."], "fixed": []}, {"version": "1.2.0", "date": "2026-10-13", "title": "Desktop app", "added": ["Desktop app that runs in the background and restarts itself.", "Expandable trades, profit periods, odds format and a fat cat sidekick."], "fixed": []}, {"version": "1.1.0", "date": "2026-10-13", "title": "Restore points", "added": ["Restore points before every update and a Restart now button."], "fixed": []}, {"version": "1.0.0", "date": "2026-10-13", "title": "First version", "added": ["The favourite strategy on Kalshi 15-minute crypto contracts with paper, demo and live modes, safety limits, a dashboard and reports."], "fixed": []}];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'})[c]);
 const fdate = d => { try { return new Date(d + 'T12:00:00').toLocaleDateString(undefined, {month: 'short', day: 'numeric', year: 'numeric'}); } catch (e) { return d; } };
 const ver = (c, latest) => `<article class="ver${latest ? ' latest' : ''}"><header><b>${esc(c.version)}</b><span class="t">${esc(c.title || '')}</span>` +
@@ -333,8 +387,18 @@ function pick(os) {
 let start = /Mac/i.test(navigator.platform || navigator.userAgent) ? 'macos' : 'windows';
 try { start = localStorage.getItem('ow-os') || start; } catch (e) {}
 pick(start);
+// Quick start or Full guide
+function level(l) {
+  document.body.dataset.level = l;
+  ['basic', 'full'].forEach(x => document.getElementById('lvl-' + x).setAttribute('aria-pressed', String(x === l)));
+  try { localStorage.setItem('ow-level', l); } catch (e) {}
+}
+let lv = 'basic';
+try { lv = localStorage.getItem('ow-level') || lv; } catch (e) {}
+level(lv);
+['basic', 'full'].forEach(x => document.getElementById('lvl-' + x).addEventListener('click', () => level(x)));
 tabs.forEach(t => document.getElementById('tab-' + t).addEventListener('click', () => pick(t)));
-document.querySelector('.tabs').addEventListener('keydown', e => {
+document.querySelector('.tabs[role=tablist]').addEventListener('keydown', e => {
   if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
   const cur = tabs.findIndex(t => document.getElementById('tab-' + t).getAttribute('aria-selected') === 'true');
   const next = tabs[(cur + 1) % 2]; pick(next); document.getElementById('tab-' + next).focus();

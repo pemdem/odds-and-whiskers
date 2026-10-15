@@ -1,13 +1,13 @@
 {
  "app": "Odds & Whiskers",
- "version": "2.0.1",
- "zip": "BetterBot-2.0.1.zip",
- "sha256": "849d6410ddee8c6e95ce11b252c4adcfa8954dada5ad8e9820b614135900d441",
- "notes": "Nothing gets lost: The backup taken before every update now includes the whole Litter Box (every model\u2019s fake-money bets, risk-level copies and results), the learning loop and your encrypted key vault \u2014 next to your trade history and settings. Your layout and display choices (sections, text size, theme, chosen cats) are also kept in your own data folder, so they come back by themselves if the app window\u2019s storage is ever cleared. Each part of the page now draws on its own: if one part ever fails, your balance, account and updates still show.",
- "published_at": 1792085812.705338,
- "built_at": 1792085816.9909363,
+ "version": "2.0.2",
+ "zip": "BetterBot-2.0.2.zip",
+ "sha256": "25619c66d74568fbdda5ea003eb2b58c8b64a125e5485750ff2f7423fcb6acd1",
+ "notes": "Easy Windows install: Windows: one double-click installs everything. No Python download, no settings to change: if your PC has no Python, the installer fetches its own copy and checks its fingerprint first. It then opens the app by itself and adds icons to the Desktop and Start menu. Windows: the app now lives in your user folder (AppData\\Local\\Odds and Whiskers), so you can delete the download afterwards. Running the installer again repairs it without touching your settings, key or data. Two tutorials: a Quick tour (the essentials, about a minute) and a Full tour (every part of the app, about five minutes). Pick one from Help \u2192 Show me around or Settings \u2192 General.",
+ "published_at": 1792102159.2018535,
+ "built_at": 1792102159.6017447,
  "downloads": {
-  "windows": "../downloads/OddsAndWhiskers-2.0.1-windows.zip",
-  "macos": "../downloads/OddsAndWhiskers-2.0.1-macos.zip"
+  "windows": "../downloads/OddsAndWhiskers-2.0.2-windows.zip",
+  "macos": "../downloads/OddsAndWhiskers-2.0.2-macos.zip"
  }
 }

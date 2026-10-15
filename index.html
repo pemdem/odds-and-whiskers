@@ -240,8 +240,11 @@ details.more summary { cursor: pointer; color: var(--blue); font-weight: 600; pa
           <p>Double-click <span class="file">OddsAndWhiskers-1.10.1-macos.zip</span> in Downloads, then drag the <span class="file">Odds and Whiskers</span>
             folder into <b>Documents</b>. Keep it there; the app lives in it.</p></li>
         <li><h3>Run the installer</h3>
-          <p>In the folder, <b>right-click</b> (or Control-click) <span class="file">Install Odds and Whiskers.command</span> and choose
-            <b>Open</b>, then <b>Open</b> again. macOS asks once because the file came from the internet. A Terminal window shows the progress.</p></li>
+          <p>In the folder, double-click <span class="file">Install Odds and Whiskers.command</span>. macOS will probably block it
+            (“Apple could not verify…” or “can’t check it for malicious software”) because the app isn’t signed with a paid Apple certificate. Click <b>Done</b>, then:</p>
+          <ul><li>Open <b>System Settings → Privacy &amp; Security</b>, scroll to the bottom, click <b>Open Anyway</b> next to the message, enter your password and click <b>Open Anyway</b> again.</li>
+            <li>Or in <b>Terminal</b>: type <kbd>bash</kbd> and a space, drag the file into the window, press Return.</li></ul>
+          <p>You only do this once: the installer clears the warning for the rest of the folder. A Terminal window shows the progress.</p></li>
         <li><h3>Open it and practise</h3>
           <p>Double-click <b>Odds &amp; Whiskers</b> on your Desktop. It starts in <b>practice mode</b>: fake money on real Kalshi prices.
             Keep the Mac plugged in and awake while it trades; it can't bet while the Mac sleeps.</p></li>

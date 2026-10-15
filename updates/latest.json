@@ -1,13 +1,13 @@
 {
  "app": "Odds & Whiskers",
- "version": "1.11.0",
- "zip": "BetterBot-1.11.0.zip",
- "sha256": "b55b637601fc5a7852bed8714b1e58b8703d2700928310c3a9d03e80610942b2",
- "notes": "Easy Setup: Mac: one \u201cOdds & Whiskers Setup\u201d app installs everything with clicks \u2014 it brings its own Python, so there\u2019s no Terminal and no python.org step. A welcome wizard for new copies: practice mode, connecting your Kalshi account, moving money and switching to real money, all inside the app. Your Kalshi key can be set up in the app (Settings \u2192 Kalshi account). It\u2019s stored encrypted on this computer and locked by the Mac Keychain or Windows Credential Manager \u2014 never uploaded, never shown again.",
- "published_at": 1792080894.1893883,
- "built_at": 1792080894.7944055,
+ "version": "2.0.0",
+ "zip": "BetterBot-2.0.0.zip",
+ "sha256": "2fc352edead6af6cfb74c734639ea916de663ac70d40a84d1914abc9e81e25a9",
+ "notes": "The Big Fat Cat Update: Cat Council: ask your sidekicks anything \u2014 click your sidekick, \u201cAsk\u201d on a Cat Chat card, or Help \u2192 Ask the cats. Biscuit knows your money and what happened while you were away, Le Chonk your risk and why trading stopped, Le Chill your strategies and experiments, Katya your losses and anything unusual (still a secret). Every answer uses your real balances, bets, settings, logs and experiment results, labels each number (real money, practice, simulated, historical test, estimate, live market) with the time it was read, shows the evidence and how sure it is, and says when it doesn\u2019t know. The cats can open the right screen, preview a Clump change, start a fake-money experiment, fetch current prices and offer to resume \u2014 real-money changes still need the usual confirmations. They work offline, for free.",
+ "published_at": 1792084733.8986835,
+ "built_at": 1792084734.3746712,
  "downloads": {
-  "windows": "../downloads/OddsAndWhiskers-1.11.0-windows.zip",
-  "macos": "../downloads/OddsAndWhiskers-1.11.0-macos.zip"
+  "windows": "../downloads/OddsAndWhiskers-2.0.0-windows.zip",
+  "macos": "../downloads/OddsAndWhiskers-2.0.0-macos.zip"
  }
 }

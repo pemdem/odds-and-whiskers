@@ -1,13 +1,13 @@
 {
  "app": "Odds & Whiskers",
- "version": "1.9.1",
- "zip": "BetterBot-1.9.1.zip",
- "sha256": "1562ae4a6b588e80d332bc622f8296c25987bf0950286dd555021b4f27d230a4",
- "notes": "A real website: Odds & Whiskers has its own website: pemdem.github.io/odds-and-whiskers \u2014 download for Windows or macOS straight from the page. The app also checks the website for new versions, so you get updates even without the shared OneDrive folder. Every update is still signed and checked before it can be installed.",
- "published_at": 1792001574.4272256,
- "built_at": 1792001574.6748228,
+ "version": "1.9.2",
+ "zip": "BetterBot-1.9.2.zip",
+ "sha256": "9e37cbe58eab597e4a2e0619a0b9ef2cb92e67962b1be4c5ce6a814bec5205c2",
+ "notes": "Mac install fix: Works with Python 3.12, 3.13 and 3.14. The installers pick a Python that works and say exactly what to install if none is found.",
+ "published_at": 1792023006.177601,
+ "built_at": 1792023006.6035502,
  "downloads": {
-  "windows": "../downloads/OddsAndWhiskers-1.9.1-windows.zip",
-  "macos": "../downloads/OddsAndWhiskers-1.9.1-macos.zip"
+  "windows": "../downloads/OddsAndWhiskers-1.9.2-windows.zip",
+  "macos": "../downloads/OddsAndWhiskers-1.9.2-macos.zip"
  }
 }
